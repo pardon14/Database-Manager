@@ -28,35 +28,115 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.kamperyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.wypozyczalniaKamperowDataSet = new Wypozyczalnia_kamperow.WypozyczalniaKamperowDataSet();
+            this.kamperyTableAdapter = new Wypozyczalnia_kamperow.WypozyczalniaKamperowDataSetTableAdapters.kamperyTableAdapter();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.usunButton = new System.Windows.Forms.Button();
+            this.refreshButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kamperyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wypozyczalniaKamperowDataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // dataGridView1
             // 
-            this.textBox1.Location = new System.Drawing.Point(38, 27);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(243, 242);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1131, 367);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // kamperyBindingSource
+            // 
+            this.kamperyBindingSource.DataMember = "kampery";
+            this.kamperyBindingSource.DataSource = this.wypozyczalniaKamperowDataSet;
+            // 
+            // wypozyczalniaKamperowDataSet
+            // 
+            this.wypozyczalniaKamperowDataSet.DataSetName = "WypozyczalniaKamperowDataSet";
+            this.wypozyczalniaKamperowDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // kamperyTableAdapter
+            // 
+            this.kamperyTableAdapter.ClearBeforeFill = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 428);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(217, 21);
+            this.comboBox1.TabIndex = 2;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 394);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 25);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Wybierz tabelę:";
+            // 
+            // usunButton
+            // 
+            this.usunButton.Location = new System.Drawing.Point(577, 425);
+            this.usunButton.Name = "usunButton";
+            this.usunButton.Size = new System.Drawing.Size(121, 23);
+            this.usunButton.TabIndex = 4;
+            this.usunButton.Text = "Usuń rekord";
+            this.usunButton.UseVisualStyleBackColor = true;
+            this.usunButton.Click += new System.EventHandler(this.usunButton_Click);
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.Location = new System.Drawing.Point(235, 426);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(87, 23);
+            this.refreshButton.TabIndex = 5;
+            this.refreshButton.Text = "Odśwież";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1155, 465);
+            this.Controls.Add(this.refreshButton);
+            this.Controls.Add(this.usunButton);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.dataGridView1);
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Database Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kamperyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wypozyczalniaKamperowDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private WypozyczalniaKamperowDataSet wypozyczalniaKamperowDataSet;
+        private System.Windows.Forms.BindingSource kamperyBindingSource;
+        private WypozyczalniaKamperowDataSetTableAdapters.kamperyTableAdapter kamperyTableAdapter;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button usunButton;
+        private System.Windows.Forms.Button refreshButton;
     }
 }
 
