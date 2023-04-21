@@ -37,6 +37,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.usunButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kamperyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wypozyczalniaKamperowDataSet)).BeginInit();
@@ -105,11 +107,32 @@
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(418, 425);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(153, 23);
+            this.saveButton.TabIndex = 6;
+            this.saveButton.Text = "Zapisz wprowadzone dane";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1091, 443);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "pardon14";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1155, 465);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.usunButton);
             this.Controls.Add(this.label1);
@@ -137,6 +160,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button usunButton;
         private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Label label2;
     }
 }
 

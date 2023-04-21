@@ -139,12 +139,9 @@ namespace Wypozyczalnia_kamperow
 
         private void usunButton_Click(object sender, EventArgs e)
         {
-            // Sprawdzenie, czy wybrano jakikolwiek rekord w DataGridView
+            // Sprawdzenie, czy wybrano jakiekolwiek rekordy w DataGridView
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // Pobranie wartości zaznaczonego rekordu w pierwszej kolumnie (lub innej, jeśli nie jest to ID)
-                string selectedValue = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-
                 // Inicjalizacja połączenia z bazą danych
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -152,21 +149,28 @@ namespace Wypozyczalnia_kamperow
                     {
                         connection.Open();
 
-                        // Utworzenie zapytania SQL do usunięcia rekordu na podstawie wartości zaznaczonej kolumny
-                        string query = $"DELETE FROM {comboBox1.SelectedItem} WHERE {dataGridView1.Columns[0].HeaderText} = @selectedValue";
-                        SqlCommand command = new SqlCommand(query, connection);
-                        command.Parameters.AddWithValue("@selectedValue", selectedValue);
-
-                        // Wykonanie zapytania
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
+                        // Iterowanie przez zaznaczone wiersze
+                        foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                         {
-                            MessageBox.Show("Rekord został usunięty z bazy danych.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nie udało się usunąć rekordu z bazy danych.");
+                            // Pobranie wartości zaznaczonego rekordu w pierwszej kolumnie (lub innej, jeśli nie jest to ID)
+                            string selectedValue = row.Cells[0].Value.ToString();
+
+                            // Utworzenie zapytania SQL do usunięcia rekordu na podstawie wartości zaznaczonej kolumny
+                            string query = $"DELETE FROM {comboBox1.SelectedItem} WHERE {dataGridView1.Columns[0].HeaderText} = @selectedValue";
+                            SqlCommand command = new SqlCommand(query, connection);
+                            command.Parameters.AddWithValue("@selectedValue", selectedValue);
+
+                            // Wykonanie zapytania
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show($"Rekord o wartości {selectedValue} został usunięty z bazy danych.");
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Nie udało się usunąć rekordu o wartości {selectedValue} z bazy danych.");
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -177,9 +181,10 @@ namespace Wypozyczalnia_kamperow
             }
             else
             {
-                MessageBox.Show("Nie wybrano rekordu do usunięcia.");
+                MessageBox.Show("Nie wybrano rekordów do usunięcia.");
             }
         }
+
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
@@ -217,6 +222,36 @@ namespace Wypozyczalnia_kamperow
             finally
             {
                 connection.Close();
+            }
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            // Sprawdzenie, czy wybrano jakąś tabelę
+            if (comboBox1.SelectedItem == null)
+                return;
+
+            string selectedTableName = comboBox1.SelectedItem.ToString(); // Pobranie nazwy wybranej tabeli z ComboBoxa
+
+            try
+            {
+                // Pobieranie danych z DataGridView
+                DataTable dt = (DataTable)dataGridView1.DataSource;
+
+                // Tworzenie adaptera danych
+                SqlDataAdapter adapter = new SqlDataAdapter($"SELECT * FROM {selectedTableName}", connection);
+
+                // Tworzenie komendy SQL do aktualizacji bazy danych
+                SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+
+                // Aktualizacja bazy danych
+                adapter.Update(dt);
+
+                MessageBox.Show("Dane zostały zapisane do bazy danych.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas zapisywania danych do bazy danych: " + ex.Message);
             }
         }
     }
