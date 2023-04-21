@@ -254,5 +254,14 @@ namespace Wypozyczalnia_kamperow
                 MessageBox.Show("Błąd podczas zapisywania danych do bazy danych: " + ex.Message);
             }
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Zamknięcie połączenia z bazą danych przed zamknięciem aplikacji
+            if (connection != null && connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
+        }
     }
 }

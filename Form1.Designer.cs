@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.kamperyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.wypozyczalniaKamperowDataSet = new Wypozyczalnia_kamperow.WypozyczalniaKamperowDataSet();
-            this.kamperyTableAdapter = new Wypozyczalnia_kamperow.WypozyczalniaKamperowDataSetTableAdapters.kamperyTableAdapter();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.usunButton = new System.Windows.Forms.Button();
@@ -40,8 +36,6 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kamperyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wypozyczalniaKamperowDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -53,20 +47,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1131, 367);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // kamperyBindingSource
-            // 
-            this.kamperyBindingSource.DataMember = "kampery";
-            this.kamperyBindingSource.DataSource = this.wypozyczalniaKamperowDataSet;
-            // 
-            // wypozyczalniaKamperowDataSet
-            // 
-            this.wypozyczalniaKamperowDataSet.DataSetName = "WypozyczalniaKamperowDataSet";
-            this.wypozyczalniaKamperowDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // kamperyTableAdapter
-            // 
-            this.kamperyTableAdapter.ClearBeforeFill = true;
             // 
             // comboBox1
             // 
@@ -144,8 +124,6 @@
             this.Text = "Database Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kamperyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wypozyczalniaKamperowDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,9 +131,6 @@
 
         #endregion
         private System.Windows.Forms.DataGridView dataGridView1;
-        private WypozyczalniaKamperowDataSet wypozyczalniaKamperowDataSet;
-        private System.Windows.Forms.BindingSource kamperyBindingSource;
-        private WypozyczalniaKamperowDataSetTableAdapters.kamperyTableAdapter kamperyTableAdapter;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button usunButton;
